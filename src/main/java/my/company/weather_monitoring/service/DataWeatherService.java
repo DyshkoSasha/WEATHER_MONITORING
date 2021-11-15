@@ -10,8 +10,8 @@ public interface DataWeatherService {
 
     void saveDataWeather();
 
-    void dataWeatherAdd(City city);
+    DataWeather dataWeatherAdd(City city);
 
-    DataWeather findDataWeatherByCityAndDate(String city, LocalDateTime date);
+    DataWeather findDataWeatherByCityAndDate(City city, LocalDateTime date);
 
 }

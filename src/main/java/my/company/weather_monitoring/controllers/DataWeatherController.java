@@ -2,6 +2,7 @@ package my.company.weather_monitoring.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import my.company.weather_monitoring.model.City;
 import my.company.weather_monitoring.model.DataWeather;
 import my.company.weather_monitoring.service.DataWeatherService;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,14 +16,14 @@ import java.time.LocalDateTime;
 @RestController
 @RequiredArgsConstructor
 @Log
-public class DataWeatherController  {
+public class DataWeatherController {
     private final DataWeatherService dataWeatherService;
 
     @GetMapping("/get/{city}")
-    public DataWeather getDataWeather(@PathVariable String city,
+    public DataWeather getDataWeather(@PathVariable City city,
                                       @RequestParam(required = false)
                                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-                                      LocalDateTime date) {
-      return dataWeatherService.findDataWeatherByCityAndDate(city, date);
+                                              LocalDateTime date) {
+        return dataWeatherService.findDataWeatherByCityAndDate(city, date);
     }
 }

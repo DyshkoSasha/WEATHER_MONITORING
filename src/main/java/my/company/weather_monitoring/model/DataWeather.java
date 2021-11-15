@@ -17,33 +17,32 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class DataWeather {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-//    @Column(name = "id")
+    @Column(name = "id")
     private Long id;
 
-//    @Column(name = "city")
+    @Column(name = "city")
     private String city;
 
-//    @Column(name = "temp")
+    @Column(name = "temp")
     @JsonProperty("t")
     private String temp;
 
-//    @Column(name = "pressure")
+    @Column(name = "pressure")
     @JsonProperty("sp")
     private String pressure;
 
-//    @Column(name = "wind")
+    @Column(name = "wind")
     @JsonProperty("speed10")
     private String wind;
 
-//    @Column(name = "rain")
+    @Column(name = "rain")
     @JsonProperty("crain")
     private String rain;
 
-//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date")
     private LocalDateTime date;
 
 }

@@ -1,7 +1,9 @@
 package my.company.weather_monitoring.model;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @RequiredArgsConstructor
 public enum City {
 
@@ -13,7 +15,4 @@ public enum City {
 
     private final String uri;
 
-    public String getUri() {
-        return uri;
-    }
 }

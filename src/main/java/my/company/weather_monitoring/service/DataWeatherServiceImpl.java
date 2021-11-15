@@ -1,6 +1,7 @@
 package my.company.weather_monitoring.service;
 
 import lombok.RequiredArgsConstructor;
+import my.company.weather_monitoring.exception.NullCityException;
 import my.company.weather_monitoring.model.City;
 import my.company.weather_monitoring.model.DataWeather;
 import my.company.weather_monitoring.repository.DataWeatherRepository;
@@ -30,7 +31,7 @@ public class DataWeatherServiceImpl implements DataWeatherService {
     }
 
     @Override
-    public void dataWeatherAdd(City city) {
+    public DataWeather dataWeatherAdd(City city) {
 
         DataWeather weather = webClient
                 .get()
@@ -41,14 +42,17 @@ public class DataWeatherServiceImpl implements DataWeatherService {
         weather.setCity(city.name());
         weather.setDate(LocalDateTime.now());
         dataWeatherRepository.save(weather);
+        return weather;
     }
 
     @Override
-    public DataWeather findDataWeatherByCityAndDate(String city, LocalDateTime date) {
-        if (date == null) {
-            return dataWeatherRepository.findFirstByCityOrderByDateDesc(city);
-        }
-        return dataWeatherRepository.findFirstByCityAndDateBeforeOrderByDateDesc(city, date);
-    }
+    public DataWeather findDataWeatherByCityAndDate(City city, LocalDateTime date) {
 
+        if (date == null) {
+            return dataWeatherRepository.findFirstByCityOrderByDateDesc(
+                    city.name()).orElse(dataWeatherAdd(city));
+        }
+        return dataWeatherRepository.findFirstByCityAndDateBeforeOrderByDateDesc(
+                city.name(), date).orElseThrow(() -> new NullCityException("Данные за указанный город отсутствует"));
+    }
 }
