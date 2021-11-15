@@ -24,7 +24,7 @@ import static org.springframework.http.MediaType.TEXT_HTML;
 @Configuration
 public class WebClientConfiguration {
 
-    private static final String BASE_URL = "https://gridforecast.com/api/v1/forecast/49.8479;35.6541/202111111200?api_token=XSVRg6P1q0rm1hDE";
+    private static final String BASE_URL = "https://gridforecast.com/api/v1/forecast";
     public static final int TIMEOUT = 1000;
 
     @Bean

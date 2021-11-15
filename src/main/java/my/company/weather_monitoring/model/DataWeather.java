@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "weather")
@@ -16,14 +17,33 @@ import javax.persistence.*;
 @Setter
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
+
 public class DataWeather {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    @Column(name = "id")
     private Long id;
-    //    private String city;
-    private String t;
-    private String sp;
-    private String speed10;
-    private String crain;
+
+//    @Column(name = "city")
+    private String city;
+
+//    @Column(name = "temp")
+    @JsonProperty("t")
+    private String temp;
+
+//    @Column(name = "pressure")
+    @JsonProperty("sp")
+    private String pressure;
+
+//    @Column(name = "wind")
+    @JsonProperty("speed10")
+    private String wind;
+
+//    @Column(name = "rain")
+    @JsonProperty("crain")
+    private String rain;
+
+//    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime date;
 
 }

@@ -10,11 +10,4 @@ spring:
     show-sql: true
     generate-ddl: true
     database: postgresql
-key:
-  name: example
 
-header:
-  name: Authorization
-
-expiration:
-  seconds: 604800
