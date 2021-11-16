@@ -1,0 +1,22 @@
+version: '3.1'
+services:
+  postgresqldb:
+    image: postgres
+    container_name: postgresql
+    restart: always
+    ports:
+      - "5433:5432"
+    volumes:
+      - apps-volumes:/var/lib/postgresql/test
+      - ./create_docker_db.sh:/docker-entrypoint-initdb.d/create_docker_db.sh
+    environment:
+      POSTGRES_PASSWORD: alex
+      POSTGRES_USER: alex
+
+  weather_monitoring:
+    build: ./
+    ports:
+     - "8080:8080"
+
+volumes:
+  apps-volumes:
