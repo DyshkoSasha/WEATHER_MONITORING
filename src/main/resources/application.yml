@@ -1,7 +1,6 @@
 spring:
   datasource:
-   url: jdbc:postgresql://localhost:5432/test
-#    url: jdbc:postgresql://postgresqldb:5432/test
+    url: jdbc:postgresql://localhost:5432/test
     username: alex
     password: alex
   jpa:
@@ -11,3 +10,10 @@ spring:
     generate-ddl: true
     database: postgresql
 
+token:
+  name: ?api_token=XSVRg6P1q0rm1hDE
+
+data:
+  name: /202111171200
+
+#    url: jdbc:postgresql://postgresqldb:5432/test

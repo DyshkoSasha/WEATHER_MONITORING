@@ -5,6 +5,7 @@ import my.company.weather_monitoring.exception.NullCityException;
 import my.company.weather_monitoring.model.City;
 import my.company.weather_monitoring.model.DataWeather;
 import my.company.weather_monitoring.repository.DataWeatherRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class DataWeatherServiceImpl implements DataWeatherService {
 
     private final DataWeatherRepository dataWeatherRepository;
     private final WebClient webClient;
+    @Value("${token.name}")
+    private String token;
+    @Value("${data.name}")
+    private String data;
 
     @Override
     @Scheduled(fixedRate = 300000)
@@ -35,7 +40,7 @@ public class DataWeatherServiceImpl implements DataWeatherService {
 
         DataWeather weather = webClient
                 .get()
-                .uri(city.getUri())
+                .uri(city.getUri() + data + token)
                 .retrieve()
                 .bodyToMono(DataWeather.class)
                 .block();
