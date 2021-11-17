@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/test
+    url: jdbc:postgresql://localhost:5432/testt
     username: alex
     password: alex
   jpa:
@@ -16,4 +16,4 @@ token:
 data:
   name: /202111171200
 
-#    url: jdbc:postgresql://postgresqldb:5432/test
+#  url: jdbc:postgresql://postgresqldb:5432/tes
