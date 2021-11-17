@@ -8,7 +8,6 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public enum City {
 
-
     MINSK("/53.8994;27.5582"),
     BREST("/49.8479;35.6541"),
     BERYOZA("/52.5348;24.9842"),

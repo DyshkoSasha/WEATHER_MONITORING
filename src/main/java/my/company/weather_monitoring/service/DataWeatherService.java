@@ -1,6 +1,5 @@
 package my.company.weather_monitoring.service;
 
-
 import my.company.weather_monitoring.model.City;
 import my.company.weather_monitoring.model.DataWeather;
 

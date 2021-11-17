@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 
 import static org.springframework.http.MediaType.TEXT_HTML;
 
-
 @Configuration
 public class WebClientConfiguration {
 
@@ -28,7 +27,6 @@ public class WebClientConfiguration {
     public static final int TIMEOUT = 1000;
 
     @Bean
-
     public WebClient webClientWithTimeout() {
         final var tcpClient = TcpClient
                 .create()
@@ -49,7 +47,5 @@ public class WebClientConfiguration {
         clientCodecConfigurer.customCodecs().encoder(new Jackson2JsonEncoder(new ObjectMapper(), TEXT_HTML));
         clientCodecConfigurer.customCodecs().decoder(new Jackson2JsonDecoder(new ObjectMapper(), TEXT_HTML));
     }
-
-
 }
 
